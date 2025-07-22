@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Instalação - TIME IS MONEY</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #2B1C50 0%, #614EF8 100%);
+            min-height: 100vh;
+            color: #FFFFFF;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+            margin-bottom: 40px;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+        
+        .status-bar {
+            background: rgba(255,255,255,0.1);
+            border-radius: 25px;
+            padding: 20px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .status-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: #E9EAF9;
+        }
+        
+        .progress-container {
+            background: rgba(0,0,0,0.2);
+            border-radius: 20px;
+            height: 8px;
+            margin: 20px 0;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(90deg, #614EF8, #9B8EE8);
+            height: 100%;
+            border-radius: 20px;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+        
+        .files-section {
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #E9EAF9;
+            text-align: center;
+        }
+        
+        .file-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .file-item:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: #614EF8;
+            transform: translateY(-2px);
+        }
+        
+        .file-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .file-icon {
+            width: 40px;
+            height: 40px;
+            background: #614EF8;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .file-details h3 {
+            margin-bottom: 5px;
+            color: #FFFFFF;
+        }
+        
+        .file-details p {
+            color: #B0B1EF;
+            font-size: 0.9rem;
+        }
+        
+        .download-btn {
+            background: linear-gradient(135deg, #614EF8, #9B8EE8);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(97, 78, 248, 0.4);
+        }
+        
+        .download-all {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .download-all-btn {
+            background: linear-gradient(135deg, #2B1C50, #614EF8);
+            color: white;
+            border: 2px solid #614EF8;
+            padding: 15px 40px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .download-all-btn:hover {
+            background: #614EF8;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(97, 78, 248, 0.5);
+        }
+        
+        .instructions {
+            background: rgba(233, 234, 249, 0.1);
+            border-left: 4px solid #614EF8;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        
+        .instructions h3 {
+            color: #E9EAF9;
+            margin-bottom: 15px;
+        }
+        
+        .instructions ol {
+            padding-left: 20px;
+        }
+        
+        .instructions li {
+            margin-bottom: 8px;
+            color: #CFCFF5;
+        }
+        
+        .support-info {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(0,0,0,0.2);
+            border-radius: 10px;
+        }
+        
+        .support-info h3 {
+            color: #E9EAF9;
+            margin-bottom: 10px;
+        }
+        
+        .support-info p {
+            color: #B0B1EF;
+        }
+        
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            margin-top: 15px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+        }
+        
+        .whatsapp-btn:hover {
+            background: #128C7E;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .file-item {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .logo {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">TIME IS MONEY</div>
+            <div class="subtitle">Portal de Instalação</div>
+        </div>
+        
+        <div class="status-bar">
+            <div class="status-title">Status da Instalação</div>
+            <div class="progress-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <p id="statusText">Clique em "Baixar Todos os Arquivos" para começar</p>
+        </div>
+        
+        <div class="files-section">
+            <h2 class="section-title">📁 Arquivos de Instalação</h2>
+            
+            <div class="file-item">
+                <div class="file-info">
+                    <div class="file-icon">📦</div>
+                    <div class="file-details">
+                        <h3>Instalador Principal</h3>
+                        <p>Arquivo principal do sistema TIME IS MONEY</p>
+                    </div>
+                </div>
+                <a href="https://drive.google.com/drive/folders/1vRKeokORfjRBkoZxoVb-mQXaIAVcYBd-?usp=sharing" 
+                   target="_blank" 
+                   class="download-btn"
+                   onclick="updateProgress(50, 'Baixando arquivo 1 de 2...')">
+                   📥 Baixar
+                </a>
+            </div>
+            
+            <div class="file-item">
+                <div class="file-info">
+                    <div class="file-icon">⚙️</div>
+                    <div class="file-details">
+                        <h3>Configurações</h3>
+                        <p>Arquivos de configuração e drivers necessários</p>
+                    </div>
+                </div>
+                <a href="https://drive.google.com/drive/folders/1vRKeokORfjRBkoZxoVb-mQXaIAVcYBd-?usp=sharing" 
+                   target="_blank" 
+                   class="download-btn"
+                   onclick="updateProgress(100, 'Todos os arquivos baixados! ✅')">
+                   📥 Baixar
+                </a>
+            </div>
+        </div>
+        
+        <div class="download-all">
+            <a href="https://drive.google.com/drive/folders/1vRKeokORfjRBkoZxoVb-mQXaIAVcYBd-?usp=sharing" 
+               target="_blank" 
+               class="download-all-btn"
+               onclick="updateProgress(100, 'Baixando pacote completo... ⏳')">
+               📦 Baixar Todos os Arquivos
+            </a>
+        </div>
+        
+        <div class="instructions">
+            <h3>📋 Instruções de Instalação</h3>
+            <ol>
+                <li>Baixe todos os arquivos clicando no botão acima</li>
+                <li>Execute primeiro o "Instalador Principal"</li>
+                <li>Siga as instruções na tela</li>
+                <li>Configure usando os arquivos de "Configurações"</li>
+                <li>Reinicie o computador quando solicitado</li>
+            </ol>
+        </div>
+        
+        <div class="support-info">
+            <h3>🆘 Precisa de Ajuda?</h3>
+            <p>Nossa equipe está pronta para auxiliar você durante a instalação</p>
+            <a href="#" class="whatsapp-btn" onclick="alert('https://widget.karoo.com.br/c/10022')">
+                💬 Chamar Suporte
+            </a>
+        </div>
+    </div>
+    
+    <script>
+        function updateProgress(percentage, message) {
+            const progressBar = document.getElementById('progressBar');
+            const statusText = document.getElementById('statusText');
+            
+            progressBar.style.width = percentage + '%';
+            statusText.textContent = message;
+            
+            if (percentage === 100) {
+                setTimeout(() => {
+                    statusText.textContent = 'Instalação pronta para começar! 🚀';
+                }, 2000);
+            }
+        }
+        
+        // Simular progresso inicial
+        setTimeout(() => {
+            updateProgress(25, 'Página carregada com sucesso');
+        }, 1000);
+    </script>
+</body>
+</html>
